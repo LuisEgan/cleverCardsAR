@@ -1,0 +1,18 @@
+#message {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  color: white;
+  font-weight: bold;
+  padding: 5%;
+  flex-flow: column;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}

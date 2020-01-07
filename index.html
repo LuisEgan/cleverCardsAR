@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" src="utils.js"></script>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+  </head>
+
+  <body style="margin : 0px; overflow: hidden;">
+    <a-scene
+      log="Hello, Scene!"
+      embedded
+      arjs="debugUIEnabled: false; sourceType: webcam;"
+    >
+      <a-assets>
+        <!-- <a-asset-item
+          id="planet-obj"
+          src="./models/planet_vr.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="planet-mtl"
+          src="./models/planet_vr.mtl"
+        ></a-asset-item> -->
+        <a-asset-item
+          id="planet-fire"
+          src="./models/planet_fire.fbx"
+        ></a-asset-item>
+        <a-asset-item
+          id="planet-ar"
+          src="./models/planet_ar.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-entity camera></a-entity>
+
+      <a-marker preset="hiro" registerevents>
+        <!-- <a-entity
+          transform
+          obj-model="obj: #planet-obj; mtl: #planet-mtl"
+        ></a-entity> -->
+
+        <a-entity
+          id="planet-ar-entity"
+          transform
+          gltf-model="#planet-ar"
+          animation-mixer="clip: Take 001;"
+        >
+        </a-entity>
+      </a-marker>
+
+      <a-marker
+        registerevents
+        preset="custom"
+        type="pattern"
+        url="pattern-cxrqr.patt"
+      >
+        <a-entity animation-mixer transform gltf-model="#planet-ar" />
+      </a-marker>
+    </a-scene>
+
+    <div id="message">
+      <span>😎</span>
+      <p>
+        Apunta la cámara a donde dice CXR
+      </p>
+    </div>
+  </body>
+</html>
