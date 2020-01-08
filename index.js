@@ -12,7 +12,7 @@ docReady(function() {
       });
 
       marker.addEventListener("markerLost", function() {
-        message.style.display = "block";
+        message.style.display = "flex";
       });
     }
   });
@@ -23,7 +23,7 @@ docReady(function() {
       const el = this.el;
       const object = el.object3D;
 
-      const scale = 10;
+      const scale = 3;
       object.scale.set(scale, scale, scale);
 
       object.rotation.x = THREE.Math.degToRad(120);

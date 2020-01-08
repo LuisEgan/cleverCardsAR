@@ -14,7 +14,7 @@
     <a-scene
       log="Hello, Scene!"
       embedded
-      arjs="debugUIEnabled: false; sourceType: webcam;"
+      arjs="debugUIEnabled: false; sourceType: webcam; patternRatio: 0.73;"
     >
       <a-assets>
         <!-- <a-asset-item
@@ -54,9 +54,19 @@
 
       <a-marker
         registerevents
+        preset="pattern"
+        type="pattern"
+        url="/markers/pattern-cxr-qr.patt"
+        arjs="patternRatio: 0.73;"
+      >
+        <a-entity animation-mixer transform gltf-model="#planet-ar" />
+      </a-marker>
+
+      <a-marker
+        registerevents
         preset="custom"
         type="pattern"
-        url="./markers/pattern-eye.patt"
+        url="./markers/pattern-qr-code.patt"
       >
         <a-entity animation-mixer transform gltf-model="#planet-ar" />
       </a-marker>
