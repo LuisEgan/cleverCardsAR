@@ -31,4 +31,10 @@ docReady(function() {
       object.rotation.y = THREE.Math.degToRad(-150);
     }
   });
+
+  // * Open whatsapp
+  document.getElementById("whatsapp").addEventListener("click", () => {
+    console.log("ayy");
+    document.location.href = "whatsapp://send?phone=3464478983";
+  });
 });
