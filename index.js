@@ -35,6 +35,6 @@ docReady(function() {
   // * Open whatsapp
   document.getElementById("whatsapp").addEventListener("click", () => {
     console.log("ayy");
-    document.location.href = "whatsapp://send?phone=56947300220";
+    document.location.href = "whatsapp://send?phone=56947304220";
   });
 });
