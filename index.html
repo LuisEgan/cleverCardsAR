@@ -15,6 +15,7 @@
       log="Hello, Scene!"
       embedded
       arjs="debugUIEnabled: false; sourceType: webcam; patternRatio: 0.73;"
+      artoolkit
     >
       <a-assets>
         <!-- <a-asset-item
@@ -33,16 +34,17 @@
           id="planet-ar"
           src="./models/planet_ar.glb"
         ></a-asset-item>
+        <a-asset-item
+          id="planet-ar-2"
+          src="./models/planet_ar.glb"
+        ></a-asset-item>
       </a-assets>
 
-      <a-entity camera></a-entity>
+      <!-- <a-sky color="#ECECEC"></a-sky> -->
 
-      <a-marker preset="hiro" registerevents>
-        <!-- <a-entity
-          transform
-          obj-model="obj: #planet-obj; mtl: #planet-mtl"
-        ></a-entity> -->
+      <!-- <a-entity camera></a-entity> -->
 
+      <a-marker preset="hiro" marker>
         <a-entity
           id="planet-ar-entity"
           transform
@@ -53,21 +55,44 @@
       </a-marker>
 
       <a-marker
-        registerevents
+        marker
         preset="custom"
         type="pattern"
         url="./markers/pattern-qr-code.patt"
       >
         <a-entity animation-mixer transform gltf-model="#planet-ar" />
       </a-marker>
+
+      <a-marker marker type="pattern" url="./markers/eye-name.patt"> </a-marker>
+
+      <a-entity
+        animation-mixer
+        transform
+        gltf-model="#planet-ar-2"
+        position="1 0 -5"
+      />
+      <a-entity
+        animation-mixer
+        transform
+        gltf-model="#planet-ar"
+        position="-1 0 -5"
+      />
+      <a-sphere position="0 0 0" radius=".25" color="#EF2D5E"></a-sphere>
     </a-scene>
 
-    <div id="message">
+    <!-- UI -->
+    <!-- <div id="message">
       <span>😎</span>
       <p>
         Apunta la cámara a la tarjeta
       </p>
       <button id="whatsapp">Whatsapp</button>
     </div>
+
+    <div id="download">
+      <button id="download-button">
+        Descarga el app!
+      </button>
+    </div> -->
   </body>
 </html>

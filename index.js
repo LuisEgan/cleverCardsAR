@@ -1,6 +1,8 @@
+let markerScanned = false;
+
 docReady(function() {
   // * Show / Hide Scan message
-  AFRAME.registerComponent("registerevents", {
+  AFRAME.registerComponent("marker", {
     init: function() {
       const marker = this.el;
       const message = document.getElementById("message");
@@ -8,12 +10,20 @@ docReady(function() {
       marker.setAttribute("emitevents", "true");
 
       marker.addEventListener("markerFound", function() {
+        if (markerScanned) return;
+
+        // Open the gates
+
+        // Set bool
+        markerScanned = true;
+
         message.style.display = "none";
+        console.log("Scanned!");
       });
 
-      marker.addEventListener("markerLost", function() {
-        message.style.display = "flex";
-      });
+      // marker.addEventListener("markerLost", function() {
+      //   message.style.display = "flex";
+      // });
     }
   });
 
@@ -32,9 +42,8 @@ docReady(function() {
     }
   });
 
-  // * Open whatsapp
+  // * Open phone to store number
   document.getElementById("whatsapp").addEventListener("click", () => {
-    console.log("ayy");
     document.location.href = "tel:+56978455169";
   });
 });
