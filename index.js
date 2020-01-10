@@ -102,6 +102,22 @@ docReady(function() {
     }
   });
 
+  AFRAME.registerComponent("ar", {
+    init: function() {
+      const el = this.el;
+      const object = el.object3D;
+
+      const scale = 3;
+      object.scale.set(scale, scale, scale);
+
+      object.rotation.x = THREE.Math.degToRad(120);
+      object.rotation.z = THREE.Math.degToRad(200);
+      object.rotation.y = THREE.Math.degToRad(-150);
+
+      object.position.set(0, -2, 0.5);
+    }
+  });
+
   // * Open phone to store number
   // document.getElementById("whatsapp").addEventListener("click", () => {
   //   document.location.href = "tel:+56978455169";
