@@ -95,12 +95,13 @@
       <!-- #endregion -->
 
       <!-- <a-sky color="#ECECEC"></a-sky> -->
-      <!-- <a-entity camera></a-entity> -->
+      <a-entity camera>
+        <a-entity id="planetFire" transform animation-mixer gltf-model="#planet-fire" />
+      </a-entity>
 
       <!-- Models -->
       <!-- #region -->
-      <a-entity id="planetFire" animation-mixer gltf-model="#planet-fire" />
-      <!-- <a-entity animation-mixer transform gltf-model="#planet-ar" /> -->
+      <a-entity animation-mixer transform gltf-model="#planet-ar" />
       <!-- #endregion -->
     </a-scene>
 
