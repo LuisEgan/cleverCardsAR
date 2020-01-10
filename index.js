@@ -23,6 +23,7 @@ docReady(function() {
   // * References
   // const message = document.getElementById("message");
   // const guide = document.getElementById("guide");
+  const planetFire = document.getElementById("planetFire");
 
   // * Scene
   AFRAME.registerComponent("scene", {
@@ -32,6 +33,9 @@ docReady(function() {
 
       // const guidePos = guide.getAttribute("position");
       console.log("camera.position: ", camera.position);
+
+      console.log('planetFire: ', planetFire);
+      planetFire.object3D.position.set(0, 0, -1);
 
       setTimeout(() => {
         // camera.position.set(.5,.5,.5);
@@ -61,7 +65,7 @@ docReady(function() {
         // Set bool
         markerScanned = true;
 
-        message.style.display = "none";
+        // message.style.display = "none";
       });
 
       // marker.addEventListener("markerLost", function() {
@@ -94,7 +98,7 @@ docReady(function() {
       object.rotation.z = THREE.Math.degToRad(200);
       object.rotation.y = THREE.Math.degToRad(-150);
 
-      object.position.set(1, 0, -5);
+      // object.position.set(1, 0, -5);
     }
   });
 
