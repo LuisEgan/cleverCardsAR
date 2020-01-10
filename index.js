@@ -23,7 +23,7 @@ docReady(function() {
   // * References
   // const message = document.getElementById("message");
   // const guide = document.getElementById("guide");
-  const planetFire = document.getElementById("planetFire");
+  // // const planetFire = document.getElementById("planetFire");
 
   // * Scene
   AFRAME.registerComponent("scene", {
@@ -34,8 +34,8 @@ docReady(function() {
       // const guidePos = guide.getAttribute("position");
       console.log("camera.position: ", camera.position);
 
-      console.log('planetFire: ', planetFire);
-      planetFire.object3D.position.set(0, 0, -1);
+      // // console.log('planetFire: ', planetFire);
+      // planetFire.object3D.position.set(0, 0, -1);
 
       setTimeout(() => {
         // camera.position.set(.5,.5,.5);
