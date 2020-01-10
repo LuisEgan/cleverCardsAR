@@ -98,7 +98,7 @@ docReady(function() {
       object.rotation.z = THREE.Math.degToRad(200);
       object.rotation.y = THREE.Math.degToRad(-150);
 
-      object.position.set(1, 0, -3);
+      // object.position.set(1, 0, -3);
     }
   });
 
