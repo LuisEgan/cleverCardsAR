@@ -1,5 +1,24 @@
 let markerScanned = false;
 
+const loadGLTF = (source, scene) => {
+  const loader = new THREE.GLTFLoader();
+
+  const onLoad = object => {
+    console.log("object: ", object);
+    scene.object3D.add(object);
+  };
+
+  const onLoading = xhr => {
+    console.log(`${(xhr.loaded / xhr.total) * 100}% loaded`);
+  };
+
+  const onError = error => {
+    console.error("An error happened", error);
+  };
+
+  loader.load(source, onLoad, onLoading, onError);
+};
+
 docReady(function() {
   // * References
   // const message = document.getElementById("message");
@@ -8,11 +27,10 @@ docReady(function() {
   // * Scene
   AFRAME.registerComponent("scene", {
     init: function() {
-      const {
-        el: { camera }
-      } = this;
+      const { el: scene } = this;
+      const { camera } = scene;
 
-      const guidePos = guide.getAttribute("position");
+      // const guidePos = guide.getAttribute("position");
       console.log("camera.position: ", camera.position);
 
       setTimeout(() => {
@@ -21,7 +39,7 @@ docReady(function() {
       }, 2000);
 
       setTimeout(() => {
-        console.log("guidePos: ", guidePos);
+        // console.log("guidePos: ", guidePos);
         // camera.lookAt(guidePos);
       }, 3000);
     }
@@ -75,6 +93,8 @@ docReady(function() {
       object.rotation.x = THREE.Math.degToRad(120);
       object.rotation.z = THREE.Math.degToRad(200);
       object.rotation.y = THREE.Math.degToRad(-150);
+
+      object.position.set(1, 0, -5);
     }
   });
 

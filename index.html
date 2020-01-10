@@ -29,7 +29,7 @@
         ></a-asset-item> -->
         <a-asset-item
           id="planet-fire"
-          src="./models/planet_fire.fbx"
+          src="./models/planet_fire.glb"
         ></a-asset-item>
         <a-asset-item
           id="planet-ar"
@@ -95,29 +95,16 @@
       <!-- #endregion -->
 
       <!-- <a-sky color="#ECECEC"></a-sky> -->
-      <!-- <a-entity camera></a-entity> -->
+      <a-entity camera></a-entity>
 
       <!-- Models -->
       <!-- #region -->
       <a-entity
         animation-mixer
         transform
-        gltf-model="#planet-ar-2"
-        position="1 0 -5"
+        gltf-model="#planet-fire"
       />
-      <a-entity
-        animation-mixer
-        transform
-        gltf-model="#planet-ar"
-        position="-1 0 -5"
-      />
-      <a-sphere
-        id="guide"
-        position="1.3 -0.55 1.6"
-        radius=".25"
-        color="blue"
-      ></a-sphere>
-      <a-sphere position="0 0 0" radius=".25" color="white"></a-sphere>
+      <!-- <a-entity animation-mixer transform gltf-model="#planet-ar" /> -->
       <!-- #endregion -->
       <!-- /Models -->
     </a-scene>
