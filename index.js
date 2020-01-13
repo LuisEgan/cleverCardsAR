@@ -23,31 +23,31 @@ docReady(function() {
   // * References
   // const message = document.getElementById("message");
   // const guide = document.getElementById("guide");
-  // // const planetFire = document.getElementById("planetFire");
+  const planetFire = document.getElementById("planetFire");
 
   // * Scene
-  AFRAME.registerComponent("scene", {
-    init: function() {
-      const { el: scene } = this;
-      const { camera } = scene;
+  // AFRAME.registerComponent("scene", {
+  //   init: function() {
+  //     const { el: scene } = this;
+  //     const { camera } = scene;
 
-      // const guidePos = guide.getAttribute("position");
-      console.log("camera.position: ", camera.position);
+  //     // const guidePos = guide.getAttribute("position");
+  //     console.log("camera.position: ", camera.position);
 
-      // // console.log('planetFire: ', planetFire);
-      // planetFire.object3D.position.set(0, 0, -1);
+  //     // console.log("planetFire: ", planetFire);
+  //     // planetFire.object3D.position.set(0, 0, -1);
 
-      setTimeout(() => {
-        // camera.position.set(.5,.5,.5);
-        console.log("camera.position: ", camera.position);
-      }, 2000);
+  //     setTimeout(() => {
+  //       camera.position.set(0.5, 0, 0);
+  //       console.log("camera.position: ", camera.position);
+  //     }, 2000);
 
-      setTimeout(() => {
-        // console.log("guidePos: ", guidePos);
-        // camera.lookAt(guidePos);
-      }, 3000);
-    }
-  });
+  //     setTimeout(() => {
+  //       // console.log("guidePos: ", guidePos);
+  //       camera.lookAt(planetFire.object3D.position);
+  //     }, 3000);
+  //   }
+  // });
 
   // * Show / Hide Scan message
   AFRAME.registerComponent("marker", {
@@ -56,8 +56,10 @@ docReady(function() {
 
       marker.setAttribute("emitevents", "true");
 
+      const name = marker.getAttribute("name");
+
       marker.addEventListener("markerFound", function() {
-        console.log("Scanned!");
+        console.log(`Scanned! ---> ${name}`);
         if (markerScanned) return;
 
         // Open the gates
@@ -71,17 +73,6 @@ docReady(function() {
       // marker.addEventListener("markerLost", function() {
       //   message.style.display = "flex";
       // });
-    }
-  });
-
-  AFRAME.registerComponent("markerluis", {
-    init: function() {
-      const marker = this.el;
-      marker.setAttribute("emitevents", "true");
-
-      marker.addEventListener("markerFound", function() {
-        console.log("Scanned Luis!");
-      });
     }
   });
 
