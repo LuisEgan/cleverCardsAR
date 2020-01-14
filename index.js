@@ -20,6 +20,11 @@ const loadGLTF = (source, scene) => {
 };
 
 docReady(function() {
+  // * Get card owner
+  const cardOwner = getQueryParams("name");
+  console.log("cardOwner: ", cardOwner);
+  alert(cardOwner);
+
   // * References
   // const message = document.getElementById("message");
   // const guide = document.getElementById("guide");
