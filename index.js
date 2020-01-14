@@ -19,11 +19,10 @@ const loadGLTF = (source, scene) => {
   loader.load(source, onLoad, onLoading, onError);
 };
 
-docReady(function() {
+docReady(() => {
   // * Get card owner
   const cardOwner = getQueryParams("name");
   console.log("cardOwner: ", cardOwner);
-  alert(cardOwner);
 
   // * References
   // const message = document.getElementById("message");
@@ -36,11 +35,11 @@ docReady(function() {
   //     const { el: scene } = this;
   //     const { camera } = scene;
 
-  //     // const guidePos = guide.getAttribute("position");
+  // const guidePos = guide.getAttribute("position");
   //     console.log("camera.position: ", camera.position);
 
-  //     // console.log("planetFire: ", planetFire);
-  //     // planetFire.object3D.position.set(0, 0, -1);
+  // console.log("planetFire: ", planetFire);
+  // planetFire.object3D.position.set(0, 0, -1);
 
   //     setTimeout(() => {
   //       camera.position.set(0.5, 0, 0);
@@ -48,7 +47,7 @@ docReady(function() {
   //     }, 2000);
 
   //     setTimeout(() => {
-  //       // console.log("guidePos: ", guidePos);
+  // console.log("guidePos: ", guidePos);
   //       camera.lookAt(planetFire.object3D.position);
   //     }, 3000);
   //   }
