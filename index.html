@@ -3,18 +3,18 @@
   <head>
     <link rel="stylesheet" href="styles.css" />
     <script type="text/javascript" src="utils.js"></script>
-    <!-- <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script> -->
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script type="text/javascript" src="index.js"></script>
   </head>
 
   <body style="margin : 0px;">
     <a-scene
-      log="Hello, Scene!"
-      embedded
+      vr-mode-ui="enabled: false"
       arjs="debugUIEnabled: false; sourceType: webcam; patternRatio: 0.73;"
+      embedded
       artoolkit
       scene
     >
@@ -153,7 +153,17 @@
 
     <!-- UI -->
     <div id="message">
-      <div id="black-top"></div>
+      <div id="black-top">
+        <lottie-player
+          src="https://assets9.lottiefiles.com/datafiles/MUp3wlMDGtoK5FK/data.json"
+          background="transparent"
+          speed="1"
+          style="padding: 25%;"
+          loop
+          autoplay
+        >
+        </lottie-player>
+      </div>
       <div id="black-left"></div>
       <div id="black-right"></div>
       <div id="black-bottom"></div>
@@ -167,10 +177,10 @@
       </button>
     </div> -->
 
-    <div id="twoD">
+    <!-- <div id="twoD">
       <section><h1>AYEE</h1></section>
       <section><h1>AYEE</h1></section>
       <section><h1>AYEE</h1></section>
-    </div>
+    </div> -->
   </body>
 </html>
