@@ -2,12 +2,71 @@
 <html>
   <head>
     <link rel="stylesheet" href="styles.css" />
-    <script type="text/javascript" src="utils.js"></script>
+    <script type="text/javascript" src="js/constants.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script type="text/javascript" src="index.js"></script>
+    <script>
+      !(function() {
+        var analytics = (window.analytics = window.analytics || []);
+        if (!analytics.initialize)
+          if (analytics.invoked)
+            window.console &&
+              console.error &&
+              console.error("Segment snippet included twice.");
+          else {
+            analytics.invoked = !0;
+            analytics.methods = [
+              "trackSubmit",
+              "trackClick",
+              "trackLink",
+              "trackForm",
+              "pageview",
+              "identify",
+              "reset",
+              "group",
+              "track",
+              "ready",
+              "alias",
+              "debug",
+              "page",
+              "once",
+              "off",
+              "on"
+            ];
+            analytics.factory = function(t) {
+              return function() {
+                var e = Array.prototype.slice.call(arguments);
+                e.unshift(t);
+                analytics.push(e);
+                return analytics;
+              };
+            };
+            for (var t = 0; t < analytics.methods.length; t++) {
+              var e = analytics.methods[t];
+              analytics[e] = analytics.factory(e);
+            }
+            analytics.load = function(t, e) {
+              var n = document.createElement("script");
+              n.type = "text/javascript";
+              n.async = !0;
+              n.src =
+                "https://cdn.segment.com/analytics.js/v1/" +
+                t +
+                "/analytics.min.js";
+              var a = document.getElementsByTagName("script")[0];
+              a.parentNode.insertBefore(n, a);
+              analytics._loadOptions = e;
+            };
+            analytics.SNIPPET_VERSION = "4.1.0";
+            analytics.load("oOPiJ0h2iNxG6g3Rjz4RUBtMdGDZLheL");
+            analytics.page();
+          }
+      })();
+    </script>
+    <script type="text/javascript" src="js/index.js"></script>
   </head>
 
   <body style="margin : 0px;">
@@ -165,7 +224,24 @@
       </div>
       <div id="black-left"></div>
       <div id="black-right"></div>
-      <div id="black-bottom"></div>
+      <div id="message-bottom">
+        <a id="btn-call"
+          ><img src="./images/svg/01-button-call.svg" alt="call"
+        /></a>
+        <a id="btn-web"
+          ><img src="./images/svg/02-button-web.svg" alt="web"
+        /></a>
+        <a id="btn-linkedin"
+          ><img src="./images/svg/03-button-linkedin.svg" alt="linkedin"
+        /></a>
+        <a id="btn-mail"
+          ><img src="./images/svg/04-button-mail.svg" alt="mail"
+        /></a>
+        <a id="btn-wsapp"
+          ><img src="./images/svg/05-button-wsapp.svg" alt="wsapp"
+        /></a>
+        <div id="black-bottom"></div>
+      </div>
 
       <!-- <button id="whatsapp">Whatsapp</button> -->
     </div>

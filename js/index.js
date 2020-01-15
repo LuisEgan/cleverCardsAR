@@ -20,14 +20,16 @@ const loadGLTF = (source, scene) => {
 };
 
 docReady(() => {
-  // * Get card owner
-  const cardOwner = getQueryParams("name");
-  console.log("cardOwner: ", cardOwner);
-
   // * References
   // const message = document.getElementById("message");
   // const guide = document.getElementById("guide");
   const planetFire = document.getElementById("planetFire");
+
+  // * Get card owner
+  const cardOwner = getQueryParams("name");
+
+  // * Set buttons urls
+  setButtonsUrls(cardOwner);
 
   // * Scene
   // AFRAME.registerComponent("scene", {
