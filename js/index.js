@@ -1,29 +1,13 @@
 let markerScanned = false;
 
-const loadGLTF = (source, scene) => {
-  const loader = new THREE.GLTFLoader();
-
-  const onLoad = object => {
-    console.log("object: ", object);
-    scene.object3D.add(object);
-  };
-
-  const onLoading = xhr => {
-    console.log(`${(xhr.loaded / xhr.total) * 100}% loaded`);
-  };
-
-  const onError = error => {
-    console.error("An error happened", error);
-  };
-
-  loader.load(source, onLoad, onLoading, onError);
-};
-
 docReady(() => {
   // * References
   // const message = document.getElementById("message");
   // const guide = document.getElementById("guide");
-  const planetFire = document.getElementById("planetFire");
+  const blackTop = document.getElementById("black-top");
+  const blackLeft = document.getElementById("black-left");
+  const blackRight = document.getElementById("black-right");
+  const blackBottom = document.getElementById("black-bottom");
 
   // * Get card owner
   const cardOwner = getQueryParams("name");
@@ -59,26 +43,31 @@ docReady(() => {
   AFRAME.registerComponent("marker", {
     init: function() {
       const marker = this.el;
+      const name = marker.getAttribute("name");
 
       marker.setAttribute("emitevents", "true");
 
-      const name = marker.getAttribute("name");
-
       marker.addEventListener("markerFound", function() {
-        console.log(`Scanned! ---> ${name}`);
-        if (markerScanned) return;
+        console.log("name: ", name);
+        // if (markerScanned) return;
 
-        // Open the gates
-
-        // Set bool
+        // * Set bool
         markerScanned = true;
 
-        // message.style.display = "none";
+        // * Hide black borders
+        animateCSS(blackTop, "fadeOut", "fadeIn");
+        animateCSS(blackLeft, "fadeOut", "fadeIn");
+        animateCSS(blackRight, "fadeOut", "fadeIn");
+        animateCSS(blackBottom, "fadeOut", "fadeIn");
       });
 
-      // marker.addEventListener("markerLost", function() {
-      //   message.style.display = "flex";
-      // });
+      marker.addEventListener("markerLost", function() {
+        // * Show black borders
+        animateCSS(blackTop, "fadeIn", "fadeOut");
+        animateCSS(blackLeft, "fadeIn", "fadeOut");
+        animateCSS(blackRight, "fadeIn", "fadeOut");
+        animateCSS(blackBottom, "fadeIn", "fadeOut");
+      });
     }
   });
 

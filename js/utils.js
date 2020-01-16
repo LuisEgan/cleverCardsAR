@@ -33,5 +33,52 @@ const setButtonsUrls = cardOwner => {
   btnWeb.setAttribute("href", web);
   btnLinkedin.setAttribute("href", linkedin);
   btnMail.setAttribute("href", `mailto:${mail}`);
-  btnWsapp.setAttribute("href", wsapp);
+  // btnWsapp.setAttribute("href", wsapp);
+};
+
+const animateCSS = (
+  element,
+  animationName,
+  substitutedClass,
+  removeAnimClass = false,
+  callback
+) => {
+  if (substitutedClass) {
+    element.classList.remove(substitutedClass);
+  }
+
+  element.classList.add("animated", animationName);
+
+  function handleAnimationEnd() {
+    if (removeAnimClass) {
+      element.classList.remove("animated", animationName);
+    }
+
+    element.removeEventListener("animationend", handleAnimationEnd);
+
+    if (typeof callback === "function") callback();
+  }
+
+  element.addEventListener("animationend", handleAnimationEnd);
+};
+
+// * 3D
+
+const loadGLTF = (source, scene) => {
+  const loader = new THREE.GLTFLoader();
+
+  const onLoad = object => {
+    console.log("object: ", object);
+    scene.object3D.add(object);
+  };
+
+  const onLoading = xhr => {
+    console.log(`${(xhr.loaded / xhr.total) * 100}% loaded`);
+  };
+
+  const onError = error => {
+    console.error("An error happened", error);
+  };
+
+  loader.load(source, onLoad, onLoading, onError);
 };
