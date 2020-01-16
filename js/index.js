@@ -48,7 +48,6 @@ docReady(() => {
       marker.setAttribute("emitevents", "true");
 
       marker.addEventListener("markerFound", function() {
-        console.log("name: ", name);
         // if (markerScanned) return;
 
         // * Set bool
@@ -80,27 +79,11 @@ docReady(() => {
       const scale = 3;
       object.scale.set(scale, scale, scale);
 
-      object.rotation.x = THREE.Math.degToRad(120);
-      object.rotation.z = THREE.Math.degToRad(200);
-      object.rotation.y = THREE.Math.degToRad(-150);
+      // object.rotation.x = THREE.Math.degToRad(120);
+      // object.rotation.z = THREE.Math.degToRad(200);
+      // object.rotation.y = THREE.Math.degToRad(-150);
 
-      // object.position.set(1, 0, -3);
-    }
-  });
-
-  AFRAME.registerComponent("ar", {
-    init: function() {
-      const el = this.el;
-      const object = el.object3D;
-
-      const scale = 3;
-      object.scale.set(scale, scale, scale);
-
-      object.rotation.x = THREE.Math.degToRad(120);
-      object.rotation.z = THREE.Math.degToRad(200);
-      object.rotation.y = THREE.Math.degToRad(-150);
-
-      object.position.set(0, -2, 0.5);
+      object.position.set(0, 0, 0);
     }
   });
 

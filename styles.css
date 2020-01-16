@@ -1,5 +1,5 @@
 body {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 #message {
@@ -54,12 +54,14 @@ body {
   bottom: 0;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 #message-bottom a {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 15vw;
+  height: 0;
   z-index: 1;
   max-width: 60px;
 }
