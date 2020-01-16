@@ -77,7 +77,7 @@ docReady(() => {
       const object = el.object3D;
 
       const scale = 3;
-      object.scale.set(scale, scale, scale);
+      // object.scale.set(scale, scale, scale);
 
       // object.rotation.x = THREE.Math.degToRad(120);
       // object.rotation.z = THREE.Math.degToRad(200);
