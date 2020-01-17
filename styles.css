@@ -82,3 +82,10 @@ body {
   display: flex;
   background-color: red;
 }
+
+@media (orientation: landscape) {
+  #lottie-player {
+    width: 60%;
+    margin-left: 40%;
+  }
+}
