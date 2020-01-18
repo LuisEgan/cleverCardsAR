@@ -87,6 +87,22 @@ docReady(() => {
     }
   });
 
+  AFRAME.registerComponent("transformgus", {
+    init: function() {
+      const el = this.el;
+      const object = el.object3D;
+
+      const scale = 3.5;
+      object.scale.set(scale, scale, scale);
+
+      // object.rotation.x = THREE.Math.degToRad(120);
+      // object.rotation.z = THREE.Math.degToRad(200);
+      // object.rotation.y = THREE.Math.degToRad(-150);
+
+      object.position.set(0, 0, 0);
+    }
+  });
+
   // * Open phone to store number
   // document.getElementById("whatsapp").addEventListener("click", () => {
   //   document.location.href = "tel:+56978455169";
