@@ -10,7 +10,7 @@ const cardOwners = {
   Carlos: {
     name: "Carlos",
     tel: "+56975287033",
-    web: "https://dev.cleveritgroup.com",
+    web: "https://development.cleveritgroup.com/",
     linkedin: "https://www.linkedin.com/in/carlos-gallardo-66092615/",
     mail: "cgallardo@cleveritgroup.com",
     wsapp: `https://api.whatsapp.com/send?phone=56975287033`
