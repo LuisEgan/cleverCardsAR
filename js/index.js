@@ -76,7 +76,7 @@ docReady(() => {
       const el = this.el;
       const object = el.object3D;
 
-      const scale = 1.5;
+      const scale = 3.5;
       object.scale.set(scale, scale, scale);
 
       // object.rotation.x = THREE.Math.degToRad(120);
@@ -87,19 +87,17 @@ docReady(() => {
     }
   });
 
-  AFRAME.registerComponent("transformgus", {
+  // * Set "Flip the card" message's transform
+  AFRAME.registerComponent("fliptransform", {
     init: function() {
       const el = this.el;
       const object = el.object3D;
 
-      const scale = 3.5;
-      object.scale.set(scale, scale, scale);
+      const scale = 10.5;
+      // object.scale.set(scale, scale, scale);
 
-      // object.rotation.x = THREE.Math.degToRad(120);
-      // object.rotation.z = THREE.Math.degToRad(200);
-      // object.rotation.y = THREE.Math.degToRad(-150);
+      object.rotation.x = THREE.Math.degToRad(-90);
 
-      object.position.set(0, 0, 0);
     }
   });
 
