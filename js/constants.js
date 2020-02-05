@@ -46,5 +46,30 @@ const cardOwners = {
     linkedin: "https://www.linkedin.com/in/luis-egan-565401127/",
     mail: "legan@cleveritgroup.com",
     wsapp: `https://api.whatsapp.com/send?phone=56947300220`
+  },
+  Valentina: {
+    name: "Valentina",
+    tel: "+56987496639",
+    web: "https://www.cleveritgroup.com/",
+    linkedin:
+      "https://www.linkedin.com/in/valentina-stevens-iba%C3%B1ez-106b8b144/",
+    mail: "vstevens@cleveritgroup.com",
+    wsapp: `https://api.whatsapp.com/send?phone=56987496639`
+  },
+  Jesidey: {
+    name: "Jesidey",
+    tel: "+56952098450",
+    web: "https://qa.cleveritgroup.com/",
+    linkedin: "https://www.linkedin.com/in/jesidey-rincon/",
+    mail: "jrincon@cleveritgroup.com",
+    wsapp: `https://api.whatsapp.com/send?phone=56952098450`
+  },
+  Juan: {
+    name: "Juan",
+    tel: "+56933746524",
+    web: "https://ex.cleveritgroup.com/",
+    linkedin: "https://www.linkedin.com/in/juancquirino/",
+    mail: "jcquirino@cleveritgroup.com",
+    wsapp: `https://api.whatsapp.com/send?phone=56933746524`
   }
 };

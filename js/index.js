@@ -2,42 +2,17 @@ let markerScanned = false;
 
 docReady(() => {
   // * References
-  // const message = document.getElementById("message");
-  // const guide = document.getElementById("guide");
   const blackTop = document.getElementById("black-top");
   const blackLeft = document.getElementById("black-left");
   const blackRight = document.getElementById("black-right");
   const blackBottom = document.getElementById("black-bottom");
+  const eyeAnims = document.getElementById("eyeanims");
 
   // * Get card owner
   const cardOwner = getQueryParams("name");
 
   // * Set buttons urls
   setButtonsUrls(cardOwner);
-
-  // * Scene
-  // AFRAME.registerComponent("scene", {
-  //   init: function() {
-  //     const { el: scene } = this;
-  //     const { camera } = scene;
-
-  // const guidePos = guide.getAttribute("position");
-  //     console.log("camera.position: ", camera.position);
-
-  // console.log("planetFire: ", planetFire);
-  // planetFire.object3D.position.set(0, 0, -1);
-
-  //     setTimeout(() => {
-  //       camera.position.set(0.5, 0, 0);
-  //       console.log("camera.position: ", camera.position);
-  //     }, 2000);
-
-  //     setTimeout(() => {
-  // console.log("guidePos: ", guidePos);
-  //       camera.lookAt(planetFire.object3D.position);
-  //     }, 3000);
-  //   }
-  // });
 
   // * Show / Hide Scan message
   AFRAME.registerComponent("marker", {
@@ -47,8 +22,9 @@ docReady(() => {
 
       marker.setAttribute("emitevents", "true");
 
-      marker.addEventListener("markerFound", function() {
+      marker.addEventListener("markerFound", () => {
         // if (markerScanned) return;
+        console.log("name: ", name);
 
         // * Set bool
         markerScanned = true;
@@ -60,7 +36,7 @@ docReady(() => {
         animateCSS(blackBottom, "fadeOut", "fadeIn");
       });
 
-      marker.addEventListener("markerLost", function() {
+      marker.addEventListener("markerLost", () => {
         // * Show black borders
         animateCSS(blackTop, "fadeIn", "fadeOut");
         animateCSS(blackLeft, "fadeIn", "fadeOut");
@@ -97,12 +73,34 @@ docReady(() => {
       // object.scale.set(scale, scale, scale);
 
       object.rotation.x = THREE.Math.degToRad(-90);
-
     }
   });
 
-  // * Open phone to store number
-  // document.getElementById("whatsapp").addEventListener("click", () => {
-  //   document.location.href = "tel:+56978455169";
-  // });
+  // * Handle reveal and blinking eye animations
+  AFRAME.registerComponent("eye", {
+    init: function() {
+      const marker = this.el;
+
+      marker.addEventListener("markerFound", () => {
+        eyeAnims.setAttribute(
+          "animation-mixer",
+          "clip: eyeReveal; duration: 5; loop: once"
+        );
+      });
+
+      marker.addEventListener("markerLost", () => {});
+    }
+  });
+  AFRAME.registerComponent("eyeanims", {
+    init: function() {
+      const el = this.el;
+
+      el.addEventListener("animation-finished", () => {
+        eyeAnims.setAttribute(
+          "animation-mixer",
+          "clip: eyeBlinking; loop: repeat"
+        );
+      });
+    }
+  });
 });
