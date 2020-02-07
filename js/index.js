@@ -12,7 +12,15 @@ docReady(() => {
   const cardOwner = getQueryParams("name");
 
   // * Set buttons urls
-  // setButtonsUrls(cardOwner);
+  setButtonsUrls(cardOwner);
+
+  // * Set scene
+  AFRAME.registerComponent("scene", {
+    init: function() {
+      const scene = this.el;
+      console.log('scene: ', scene);
+    }
+  });
 
   // * Show / Hide Scan message
   AFRAME.registerComponent("marker", {
