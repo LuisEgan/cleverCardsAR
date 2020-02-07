@@ -1,120 +1,120 @@
 let markerScanned = false;
 
+let blackTop, blackLeft, blackRight, blackBottom, eyeAnims;
+
 docReady(() => {
   window.addEventListener("camera-init", data => {
-    console.log("camera-init", data);
-    alert("camera ready")
+    // alert("camera ready")
   });
 
   // * References
-  const blackTop = document.getElementById("black-top");
-  const blackLeft = document.getElementById("black-left");
-  const blackRight = document.getElementById("black-right");
-  const blackBottom = document.getElementById("black-bottom");
-  const eyeAnims = document.getElementById("eyeanims");
+  blackTop = document.getElementById("black-top");
+  blackLeft = document.getElementById("black-left");
+  blackRight = document.getElementById("black-right");
+  blackBottom = document.getElementById("black-bottom");
+  eyeAnims = document.getElementById("eyeanims");
 
   // * Get card owner
   const cardOwner = getQueryParams("name");
 
   // * Set buttons urls
   setButtonsUrls(cardOwner);
+});
 
-  // * Set scene
-  AFRAME.registerComponent("scene", {
-    init: function() {
-      const scene = this.el;
-    }
-  });
+// * Set scene
+AFRAME.registerComponent("scene", {
+  init: function() {
+    const scene = this.el;
+  }
+});
 
-  // * Show / Hide Scan message
-  AFRAME.registerComponent("marker", {
-    init: function() {
-      const marker = this.el;
-      const name = marker.getAttribute("name");
+// * Show / Hide Scan message
+AFRAME.registerComponent("marker", {
+  init: function() {
+    const marker = this.el;
+    const name = marker.getAttribute("name");
+
+    marker.setAttribute("emitevents", "true");
+
+    marker.addEventListener("markerFound", () => {
+      // if (markerScanned) return;
       console.log("name: ", name);
 
-      marker.setAttribute("emitevents", "true");
+      // * Set bool
+      markerScanned = true;
 
-      marker.addEventListener("markerFound", () => {
-        // if (markerScanned) return;
-        console.log("name: ", name);
+      // * Hide black borders
+      animateCSS(blackTop, "fadeOut", "fadeIn");
+      animateCSS(blackLeft, "fadeOut", "fadeIn");
+      animateCSS(blackRight, "fadeOut", "fadeIn");
+      animateCSS(blackBottom, "fadeOut", "fadeIn");
+    });
 
-        // * Set bool
-        markerScanned = true;
+    marker.addEventListener("markerLost", () => {
+      // * Show black borders
+      animateCSS(blackTop, "fadeIn", "fadeOut");
+      animateCSS(blackLeft, "fadeIn", "fadeOut");
+      animateCSS(blackRight, "fadeIn", "fadeOut");
+      animateCSS(blackBottom, "fadeIn", "fadeOut");
+    });
+  }
+});
 
-        // * Hide black borders
-        animateCSS(blackTop, "fadeOut", "fadeIn");
-        animateCSS(blackLeft, "fadeOut", "fadeIn");
-        animateCSS(blackRight, "fadeOut", "fadeIn");
-        animateCSS(blackBottom, "fadeOut", "fadeIn");
-      });
+// * Set the 3D Model transform
+AFRAME.registerComponent("transform", {
+  init: function() {
+    const el = this.el;
+    const object = el.object3D;
 
-      marker.addEventListener("markerLost", () => {
-        // * Show black borders
-        animateCSS(blackTop, "fadeIn", "fadeOut");
-        animateCSS(blackLeft, "fadeIn", "fadeOut");
-        animateCSS(blackRight, "fadeIn", "fadeOut");
-        animateCSS(blackBottom, "fadeIn", "fadeOut");
-      });
-    }
-  });
+    const scale = 3.5;
+    object.scale.set(scale, scale, scale);
 
-  // * Set the 3D Model transform
-  AFRAME.registerComponent("transform", {
-    init: function() {
-      const el = this.el;
-      const object = el.object3D;
-      console.log("object: ", object);
+    // object.rotation.x = THREE.Math.degToRad(120);
+    // object.rotation.z = THREE.Math.degToRad(200);
+    // object.rotation.y = THREE.Math.degToRad(-150);
 
-      const scale = 3.5;
-      object.scale.set(scale, scale, scale);
+    object.position.set(0, 0, 0);
+  }
+});
 
-      // object.rotation.x = THREE.Math.degToRad(120);
-      // object.rotation.z = THREE.Math.degToRad(200);
-      // object.rotation.y = THREE.Math.degToRad(-150);
+// * Set "Flip the card" message's transform
+AFRAME.registerComponent("fliptransform", {
+  init: function() {
+    const el = this.el;
+    const object = el.object3D;
 
-      object.position.set(0, 0, 0);
-    }
-  });
+    const scale = 10.5;
+    // object.scale.set(scale, scale, scale);
 
-  // * Set "Flip the card" message's transform
-  AFRAME.registerComponent("fliptransform", {
-    init: function() {
-      const el = this.el;
-      const object = el.object3D;
+    object.rotation.x = THREE.Math.degToRad(-90);
+  }
+});
 
-      const scale = 10.5;
-      // object.scale.set(scale, scale, scale);
+// * Handle reveal and blinking eye animations
+AFRAME.registerComponent("eye", {
+  init: function() {
+    const marker = this.el;
 
-      object.rotation.x = THREE.Math.degToRad(-90);
-    }
-  });
+    marker.addEventListener("markerFound", () => {
+      console.log("anim added!");
+      eyeAnims.setAttribute(
+        "animation-mixer",
+        "clip: eyeReveal; duration: 5; loop: once"
+      );
+    });
 
-  // * Handle reveal and blinking eye animations
-  AFRAME.registerComponent("eye", {
-    init: function() {
-      const marker = this.el;
+    marker.addEventListener("markerLost", () => {});
+  }
+});
+AFRAME.registerComponent("eyeanims", {
+  init: function() {
+    const el = this.el;
 
-      marker.addEventListener("markerFound", () => {
-        eyeAnims.setAttribute(
-          "animation-mixer",
-          "clip: eyeReveal; duration: 5; loop: once"
-        );
-      });
-
-      marker.addEventListener("markerLost", () => {});
-    }
-  });
-  AFRAME.registerComponent("eyeanims", {
-    init: function() {
-      const el = this.el;
-
-      el.addEventListener("animation-finished", () => {
-        eyeAnims.setAttribute(
-          "animation-mixer",
-          "clip: eyeBlinking; loop: repeat"
-        );
-      });
-    }
-  });
+    el.addEventListener("animation-finished", () => {
+      eyeAnims.setAttribute(
+        "animation-mixer",
+        "clip: eyeBlinking; loop: repeat"
+      );
+    });
+  }
 });
