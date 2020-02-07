@@ -12,7 +12,7 @@ docReady(() => {
   const cardOwner = getQueryParams("name");
 
   // * Set buttons urls
-  setButtonsUrls(cardOwner);
+  // setButtonsUrls(cardOwner);
 
   // * Show / Hide Scan message
   AFRAME.registerComponent("marker", {
