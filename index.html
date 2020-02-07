@@ -86,55 +86,144 @@
     >
       <a-entity camera></a-entity>
 
-      <!-- ASSETS -->
+      <!-- MARKERS - FRONT -->
       <!-- #region -->
-      <a-assets>
-        <a-asset-item
-          id="flipTheCardGlb"
-          src="./models/flipTheCardGlb.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="cardLuisGlb"
-          src="./models/cardLuisGlb.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="eyeAnimationsGlb"
-          src="./models/eyeAnimationsGlb.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="cardCarlosGlb"
-          src="./models/cardCarlosGlb.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="cardDiegoGlb"
-          src="./models/cardDiegoGlb.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="cardGustavoGlb"
-          src="./models/cardGustavoGlb.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="cardMartinGlb"
-          src="./models/cardMartinGlb.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="cardNataliaGlb"
-          src="./models/cardNataliaGlb.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="cardJcGlb"
-          src="./models/cardJcGlb.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="cardJesideyGlb"
-          src="./models/cardJesideyGlb.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="cardValentinaGlb"
-          src="./models/cardValentinaGlb.glb"
-        ></a-asset-item>
-      </a-assets>
-      <!-- /ASSETS -->
+      <a-marker
+        marker
+        name="Gustavo"
+        type="pattern"
+        url="./markers/pattern-gustavo.patt"
+        ><a-entity transform animation-mixer gltf-model="#cardGustavoGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        name="Carlos"
+        type="pattern"
+        url="./markers/pattern-carlos.patt"
+        ><a-entity transform animation-mixer gltf-model="#cardCarlosGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        name="Diego"
+        type="pattern"
+        url="./markers/pattern-diego.patt"
+        ><a-entity transform animation-mixer gltf-model="#cardDiegoGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        eye
+        name="Luis"
+        type="pattern"
+        url="./markers/pattern-luis.patt"
+      >
+        <a-entity transform animation-mixer gltf-model="#cardLuisGlb" />
+        <a-entity
+          id="eyeanims"
+          eyeanims
+          animation-mixer
+          gltf-model="#eyeAnimationsGlb"
+        />
+      </a-marker>
+      <a-marker
+        marker
+        name="Martin"
+        type="pattern"
+        url="./markers/pattern-martin.patt"
+        ><a-entity transform animation-mixer gltf-model="#cardMartinGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        name="Natalia"
+        type="pattern"
+        url="./markers/pattern-natalia.patt"
+        ><a-entity transform animation-mixer gltf-model="#cardNataliaGlb"
+      /></a-marker>
+      <a-marker marker name="JC" type="pattern" url="./markers/pattern-jc.patt"
+        ><a-entity transform animation-mixer gltf-model="#cardJcGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        name="Jesidey"
+        type="pattern"
+        url="./markers/pattern-jesidey.patt"
+        ><a-entity transform animation-mixer gltf-model="#cardJesideyGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        name="Valentina"
+        type="pattern"
+        url="./markers/pattern-valentina.patt"
+        ><a-entity transform animation-mixer gltf-model="#cardValentinaGlb"
+      /></a-marker>
+      <!-- /MARKERS - FRONT -->
+      <!-- #endregion -->
+
+      <!-- MARKERS - BACK -->
+      <!-- #region -->
+      <a-marker
+        marker
+        name="Carlos"
+        type="pattern"
+        url="./markers/pattern-qr-carlos.patt"
+        ><a-entity fliptransform animation-mixer gltf-model="#flipTheCardGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        name="Diego"
+        type="pattern"
+        url="./markers/pattern-qr-diego.patt"
+        ><a-entity fliptransform animation-mixer gltf-model="#flipTheCardGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        name="Gustavo"
+        type="pattern"
+        url="./markers/pattern-qr-gustavo.patt"
+        ><a-entity fliptransform animation-mixer gltf-model="#flipTheCardGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        name="Luis"
+        type="pattern"
+        url="./markers/pattern-qr-luis.patt"
+        ><a-entity fliptransform animation-mixer gltf-model="#flipTheCardGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        name="Martin"
+        type="pattern"
+        url="./markers/pattern-qr-martin.patt"
+        ><a-entity fliptransform animation-mixer gltf-model="#flipTheCardGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        name="Natalia"
+        type="pattern"
+        url="./markers/pattern-qr-natalia.patt"
+        ><a-entity fliptransform animation-mixer gltf-model="#flipTheCardGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        name="Valentina"
+        type="pattern"
+        url="./markers/pattern-qr-valentina.patt"
+        ><a-entity fliptransform animation-mixer gltf-model="#flipTheCardGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        name="JC"
+        type="pattern"
+        url="./markers/pattern-qr-jc.patt"
+        ><a-entity fliptransform animation-mixer gltf-model="#flipTheCardGlb"
+      /></a-marker>
+      <a-marker
+        marker
+        name="Jesidey"
+        type="pattern"
+        url="./markers/pattern-qr-jesidey.patt"
+        ><a-entity fliptransform animation-mixer gltf-model="#flipTheCardGlb"
+      /></a-marker>
+      <!-- /MARKERS - BACK -->
       <!-- #endregion -->
     </a-scene>
 
