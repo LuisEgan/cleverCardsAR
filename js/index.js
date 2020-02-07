@@ -1,6 +1,11 @@
 let markerScanned = false;
 
 docReady(() => {
+  window.addEventListener("camera-init", data => {
+    console.log("camera-init", data);
+    alert("camera ready")
+  });
+
   // * References
   const blackTop = document.getElementById("black-top");
   const blackLeft = document.getElementById("black-left");
@@ -18,7 +23,6 @@ docReady(() => {
   AFRAME.registerComponent("scene", {
     init: function() {
       const scene = this.el;
-      console.log('scene: ', scene);
     }
   });
 
@@ -27,6 +31,7 @@ docReady(() => {
     init: function() {
       const marker = this.el;
       const name = marker.getAttribute("name");
+      console.log("name: ", name);
 
       marker.setAttribute("emitevents", "true");
 
@@ -59,6 +64,7 @@ docReady(() => {
     init: function() {
       const el = this.el;
       const object = el.object3D;
+      console.log("object: ", object);
 
       const scale = 3.5;
       object.scale.set(scale, scale, scale);
