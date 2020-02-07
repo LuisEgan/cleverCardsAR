@@ -1,7 +1,6 @@
 let markerScanned = false;
 
 docReady(() => {
-  alert("done")
   // * References
   const blackTop = document.getElementById("black-top");
   const blackLeft = document.getElementById("black-left");
