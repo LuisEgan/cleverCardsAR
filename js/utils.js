@@ -82,3 +82,57 @@ const loadGLTF = (source, scene) => {
 
   loader.load(source, onLoad, onLoading, onError);
 };
+
+const setMarker = cardOwner => {
+  const scene = document.getElementById("scene");
+
+  // * BACK
+  const markerBack = document.createElement("a-marker");
+  markerBack.setAttribute("marker", "");
+  markerBack.setAttribute("name", cardOwner);
+  markerBack.setAttribute("type", "pattern");
+  markerBack.setAttribute(
+    "url",
+    `./markers/pattern-qr-${cardOwner.toLowerCase()}.patt`
+  );
+  const entityFlipCard = document.createElement("a-entity");
+  entityFlipCard.setAttribute("fliptransform", "");
+  entityFlipCard.setAttribute("animation-mixer", "");
+  entityFlipCard.setAttribute("gltf-model", `url(./models/flipTheCardGlb.glb)`);
+  markerBack.appendChild(entityFlipCard);
+
+  // * FRONT
+  const markerFront = document.createElement("a-marker");
+  markerFront.setAttribute("marker", "");
+  markerFront.setAttribute("name", cardOwner);
+  markerFront.setAttribute("type", "pattern");
+  markerFront.setAttribute(
+    "url",
+    `./markers/pattern-${cardOwner.toLowerCase()}.patt`
+  );
+  const entityCard = document.createElement("a-entity");
+  entityCard.setAttribute("transform", "");
+  entityCard.setAttribute("animation-mixer", "");
+  entityCard.setAttribute(
+    "gltf-model",
+    `url(./models/card${cardOwner}Glb.glb)`
+  );
+
+  if (cardOwner === cardOwners.Luis.name) {
+    // * Set eye attribute to initialize anim
+    markerFront.setAttribute("eye", "");
+
+    // * Eye anims entity
+    const entityEye = document.createElement("a-entity");
+    entityEye.setAttribute("id", "eyeanims");
+    entityEye.setAttribute("eyeanims", "");
+    entityEye.setAttribute("animation-mixer", "");
+    entityEye.setAttribute("gltf-model", "url(./models/eyeAnimationsGlb.glb)");
+    markerFront.appendChild(entityEye);
+  }
+
+  markerFront.appendChild(entityCard);
+
+  scene.appendChild(markerBack);
+  scene.appendChild(markerFront);
+};

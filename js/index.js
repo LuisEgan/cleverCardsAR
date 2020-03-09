@@ -1,6 +1,6 @@
 let markerScanned = false;
 
-let blackTop, blackLeft, blackRight, blackBottom, eyeAnims;
+let cardOwner, blackTop, blackLeft, blackRight, blackBottom, eyeAnims;
 
 docReady(() => {
   window.addEventListener("camera-init", data => {
@@ -12,10 +12,9 @@ docReady(() => {
   blackLeft = document.getElementById("black-left");
   blackRight = document.getElementById("black-right");
   blackBottom = document.getElementById("black-bottom");
-  eyeAnims = document.getElementById("eyeanims");
 
   // * Get card owner
-  const cardOwner = getQueryParams("name");
+  cardOwner = getQueryParams("name");
 
   // * Set buttons urls
   setButtonsUrls(cardOwner);
@@ -24,7 +23,9 @@ docReady(() => {
 // * Set scene
 AFRAME.registerComponent("scene", {
   init: function() {
-    const scene = this.el;
+    setMarker(cardOwner);
+    eyeAnims = document.getElementById("eyeanims");
+    console.log('eyeAnims: ', eyeAnims);
   }
 });
 
@@ -96,7 +97,6 @@ AFRAME.registerComponent("eye", {
     const marker = this.el;
 
     marker.addEventListener("markerFound", () => {
-      console.log("anim added!");
       eyeAnims.setAttribute(
         "animation-mixer",
         "clip: eyeReveal; duration: 5; loop: once"
